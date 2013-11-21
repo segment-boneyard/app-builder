@@ -1,0 +1,60 @@
+#!/usr/bin/env node
+
+var Builder = require('component-builder');
+var fs = require('fs');
+var mkdir = require('mkdirp');
+var minify = require('minify');
+var path = require('path');
+var pure = require('rework-pure-css');
+var resolve = path.resolve;
+var rework = require('rework');
+var write = fs.writeFileSync;
+
+/**
+ * JSON configuration.
+ */
+
+var json = resolve('component.json');
+if (!fs.existsSync(json)) utils.fatal('missing component.json');
+var conf = require(json);
+
+/**
+ * Settings.
+ */
+
+var output = 'build';
+var production = process.env.NODE_ENV === 'production';
+
+/**
+ * Builder.
+ */
+
+var builder = new Builder('.');
+builder.copyAssetsTo(output);
+builder.prefixUrls('/' + output);
+
+if (production) {
+  builder.copyFiles(true);
+} else {
+  builder.development(true);
+  builder.addSourceURLs(true);
+}
+
+/**
+ * Build.
+ */
+
+builder.build(function (err, res) {
+  if (err) throw err;
+  var js = res.require + res.js + ';require("' + conf.name + '");';
+  var css = rework(res.css).use(pure).toString();
+
+  if (production) {
+    js = minify.js(js);
+    css = minify.css(css);
+  }
+
+  mkdir.sync(output);
+  write(resolve(output, 'build.js'), js);
+  write(resolve(output, 'build.css'), css);
+});

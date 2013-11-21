@@ -1,0 +1,6 @@
+{
+  "name": "component",
+  "private": true,
+  "scripts": ["index.js"],
+  "styles": ["index.css"]
+}
