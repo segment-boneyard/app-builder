@@ -1,3 +1,7 @@
+0.0.3 - November 21, 2013
+-------------------------
+* remove symlinking in dev
+
 0.0.2 - November 21, 2013
 -------------------------
 * handle optional `res.js` and `res.css`

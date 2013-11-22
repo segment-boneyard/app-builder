@@ -32,10 +32,9 @@ var production = process.env.NODE_ENV === 'production';
 var builder = new Builder('.');
 builder.copyAssetsTo(output);
 builder.prefixUrls('/' + output);
+builder.copyFiles(true);
 
-if (production) {
-  builder.copyFiles(true);
-} else {
+if (!production) {
   builder.development(true);
   builder.addSourceURLs(true);
 }
