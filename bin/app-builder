@@ -31,7 +31,7 @@ var production = process.env.NODE_ENV === 'production';
 
 var builder = new Builder('.');
 builder.copyAssetsTo(output);
-builder.prefixUrls('/' + output);
+builder.prefixUrls('/' + conf.name + '/' + output);
 builder.copyFiles(true);
 
 if (!production) {

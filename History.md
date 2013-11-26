@@ -1,3 +1,7 @@
+0.0.4 - November 26, 2013
+-------------------------
+* add name to URL rewriting
+
 0.0.3 - November 21, 2013
 -------------------------
 * remove symlinking in dev
