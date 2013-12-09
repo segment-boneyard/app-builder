@@ -1,3 +1,7 @@
+0.0.5 - December 9, 2013
+------------------------
+* change `minify` dep
+
 0.0.4 - November 26, 2013
 -------------------------
 * add name to URL rewriting
