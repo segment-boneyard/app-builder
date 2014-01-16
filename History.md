@@ -1,3 +1,9 @@
+
+0.0.6 / 2014-01-16
+==================
+
+ * update builder for casing fix
+
 0.0.5 - December 9, 2013
 ------------------------
 * change `minify` dep
