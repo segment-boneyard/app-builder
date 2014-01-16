@@ -5,7 +5,7 @@
   "license": "MIT",
   "description": "A component build command for our subapps.",
   "dependencies": {
-    "component-builder": "~0.10.0",
+    "component-builder": "~0.10.1",
     "mkdirp": "~0.3.5",
     "rework": "~0.18.3",
     "rework-pure-css": "0.0.3",
