@@ -1,5 +1,17 @@
 #!/usr/bin/env node
 
+var program = require('commander');
+
+// options
+
+program
+  .option('-o, --out <path>', 'specify output path [build]', 'build')
+  .parse(process.argv);
+
+/**
+ * Module dependencies.
+ */
+
 var Builder = require('component-builder');
 var fs = require('fs');
 var mkdir = require('mkdirp');
@@ -22,7 +34,7 @@ var conf = require(json);
  * Settings.
  */
 
-var output = 'build';
+var dest = program.out;
 var production = process.env.NODE_ENV === 'production';
 
 /**
@@ -30,8 +42,8 @@ var production = process.env.NODE_ENV === 'production';
  */
 
 var builder = new Builder('.');
-builder.copyAssetsTo(output);
-builder.prefixUrls('/' + conf.name + '/' + output);
+builder.copyAssetsTo(dest);
+builder.prefixUrls('/' + conf.name + '/' + dest);
 builder.copyFiles(true);
 
 if (!production) {
@@ -45,17 +57,17 @@ if (!production) {
 
 builder.build(function (err, res) {
   if (err) throw err;
-  mkdir.sync(output);
+  mkdir.sync(dest);
 
   if (res.js) {
     js = res.require + res.js + ';require("' + conf.name + '");';
     if (production) js = minify.js(js);
-    write(resolve(output, 'build.js'), js);
+    write(resolve(dest, 'build.js'), js);
   }
 
   if (res.css) {
     css = rework(res.css).use(pure).toString();
     if (production) css = minify.css(css);
-    write(resolve(output, 'build.css'), css);
+    write(resolve(dest, 'build.css'), css);
   }
 });

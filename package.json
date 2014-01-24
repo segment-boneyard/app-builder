@@ -9,7 +9,8 @@
     "mkdirp": "~0.3.5",
     "rework": "~0.18.3",
     "rework-pure-css": "0.0.3",
-    "minify": "git://github.com/ianstormtaylor/minify"
+    "minify": "git://github.com/ianstormtaylor/minify",
+    "commander": "~2.1.0"
   },
   "bin": {
     "app-builder": "bin/app-builder"
