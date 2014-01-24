@@ -1,7 +1,7 @@
 {
   "name": "app-builder",
   "repository": "git://github.com/segmentio/app-builder.git",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "description": "A component build command for our subapps.",
   "dependencies": {
