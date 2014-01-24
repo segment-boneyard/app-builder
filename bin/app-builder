@@ -61,7 +61,7 @@ builder.build(function (err, res) {
 
   if (res.js) {
     js = res.require + res.js + ';require("' + conf.name + '");';
-    if (production) js = minify.js(js);
+    // if (production) js = minify.js(js);
     write(resolve(dest, 'build.js'), js);
   }
 
