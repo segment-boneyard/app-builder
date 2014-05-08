@@ -1,13 +1,13 @@
 {
   "name": "app-builder",
   "repository": "git://github.com/segmentio/app-builder.git",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "license": "MIT",
   "description": "A component build command for our subapps.",
   "dependencies": {
     "component-builder": "~0.10.1",
     "mkdirp": "~0.3.5",
-    "rework": "~0.18.3",
+    "rework": "~0.20.0",
     "rework-pure-css": "0.0.3",
     "minify": "git://github.com/ianstormtaylor/minify",
     "commander": "~2.1.0"
